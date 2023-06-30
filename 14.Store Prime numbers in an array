@@ -1,0 +1,48 @@
+Write a program to store first n prime numbers in an array . After storing return the array.﻿
+
+Input:-
+n=5
+Output:- Return the output in the form of an array.
+2
+3
+5
+7
+11
+----------------------------------------------------------------------------------------------
+import java.util.*;
+public class Main
+{
+   
+    public static int[] prime_numbers(int n)
+    {
+        int k = 2;
+        int count = 0;
+        int a[] = new int[n];
+        while(count<n){
+            boolean flag = true;
+            for(int i=2;i<k;i++){
+                if(k%i==0){
+                    flag=false;
+                    break;
+                }
+            }
+            if(flag){
+                a[count]=k;
+                count=count+1;
+            }
+            k=k+1;
+        }
+        
+        return a;
+    
+    }
+     public static void main(String[]args)
+    {
+        Scanner sc=new Scanner(System.in);
+        int n =sc.nextInt();
+        
+        int[] output = prime_numbers(n);
+        for(int i=0;i<n;i++)
+            System.out.println(output[i]);
+    }
+}
