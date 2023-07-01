@@ -1,0 +1,55 @@
+There are N students in a classroom , The students which are present are in the array present [] , one student absent for the class
+Find and return the number of that student who is absent .
+
+Example 1:
+Input: present = [3,0,1]
+Output: 2
+Explanation: N = 3 since there are 3 students, so all numbers are in the range [0,3].
+2 is the absent student in the range since it does not appear in present.
+
+Example 2:
+Input: present = [0,1]
+Output: 2
+Explanation: N = 2 since there are 2 students, so all numbers are in the range [0,2].
+2 is the absent student in the range since it does not appear in present.
+=============================================================================================================
+import java.util.*;
+
+class Solution {
+    public int absent(int[] nums) {
+        
+        int sum1 = 0;
+        int sum2 = 0;
+        
+        for(int i=0; i<=nums.length; i++){
+            sum1+=i;
+        }
+        for(int j=0; j<nums.length; j++){
+            sum2+=nums[j];
+        }
+        return sum1-sum2;
+    }
+}
+
+public class Main
+{
+   
+   
+     public static void main(String[]args)
+    {
+        Scanner sc=new Scanner(System.in);
+        String y=sc.nextLine();
+        String n =sc.nextLine();
+        Solution s = new Solution();
+        String s_arr[]=n.split(" ");
+        int arr[]=new int[s_arr.length];
+        for(int i=0;i<s_arr.length;i++)
+        {
+            arr[i]=Integer.parseInt(s_arr[i]);
+        }
+        
+        int max= s.absent(arr);
+        
+        System.out.println(max);
+    }
+}
