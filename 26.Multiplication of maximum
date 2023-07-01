@@ -1,0 +1,61 @@
+
+We have an array which represent the skills of each candidate .
+you have to find such 3 candidates whose product of skills are maximum .
+you have to return that product .
+
+Example 1:
+Input: 
+N = 5
+Arr[] = {10, 3, 5, 6, 20}
+Output: 1200
+Explanation: Multiplication of 10, 6 and 20 is 1200.
+
+Example 2:
+Input:
+N = 5
+Arr[] = {-10, -3, -5, -6, -20}
+Output: -90
+Explanation: Multiplication of -3, -5 and -6 is -90.
+============================================================================
+import java.util.*;
+class Solution {
+    public int sharpener_hiring(int[] nums) {
+        int n = nums.length;
+        for(int i=0; i<n-1; i++){
+            boolean flag = false;
+            for(int j=0; j<n-1-i; j++){
+                if(nums[j]<nums[j+1]){
+                    flag = true;
+                    int temp = nums[j];
+                    nums[j] = nums[j+1];
+                    nums[j+1] = temp; 
+                }
+               
+            }
+            if(flag==false){
+                break;
+            }
+        }
+        return nums[0] * nums[1] * nums[2];
+    }
+}
+public class Main
+{   
+     public static void main(String[]args)
+    {
+        Scanner sc=new Scanner(System.in);
+        String y=sc.nextLine();
+        String n =sc.nextLine();
+        Solution s = new Solution();
+        String s_arr[]=n.split(" ");
+        int arr[]=new int[s_arr.length];
+        for(int i=0;i<s_arr.length;i++)
+        {
+            arr[i]=Integer.parseInt(s_arr[i]);
+        }
+        
+        int max= s.sharpener_hiring(arr);
+        
+        System.out.println(max);
+    }
+}
