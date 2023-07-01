@@ -1,0 +1,49 @@
+Given a 2D array find the maximum in it and return it 
+Example:-
+Input:-
+Arr=[[5, 4, 7, 2, 6],[1,-7,8]];
+Output:-
+8
+Explanation - 8 is the maximum value present in it. (greater than all numbers)
+========================================================================================
+import java.util.*;
+
+class Solution {
+    public int maximum(int[][] arr) {
+        int max = arr[0][0];
+        for(int i=0; i<arr.length; i++){
+            for(int j=0; j<arr[i].length; j++){
+               if(arr[i][j]>max){
+                   max = arr[i][j];
+               } 
+            }
+        }
+        return max;
+    }
+}
+
+public class Main
+{  
+     public static void main(String[]args)
+    {
+        Scanner sc=new Scanner(System.in);
+        Solution s = new Solution();
+        String y=sc.nextLine();
+        String col=sc.nextLine();
+        int arr[][]=new int[Integer.parseInt(y)][];
+        for(int j=0;j<Integer.parseInt(y);j++)
+        {
+            String n =sc.nextLine();
+            String s_arr[]=n.split(" ");
+            arr[j]=new int[s_arr.length];
+            for(int i=0;i<s_arr.length;i++)
+            {
+                arr[j][i]=Integer.parseInt(s_arr[i]);
+            }
+        }
+        
+        int max= s.maximum(arr);
+        
+        System.out.println(max);
+    }
+}
