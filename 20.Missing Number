@@ -1,0 +1,60 @@
+You are given an array Containing n-1 distinct numbers from range [1, n].
+There is one element missing from the range[1,n] in the array. Find that missing Number and return it.
+
+Input: nums = [3,4,1]
+Output: 2
+Explanation: n = 4 since there are 3 numbers, so all numbers are in the range [1,4].
+2 is the missing number in the range since it does not appear in nums.
+=================================================================================================================
+import java.util.*;
+
+
+//========== User's Code Starts Here ==========
+
+class Solution {
+    public int missing_elements(int[] arr) {
+        int N = arr.length;
+           int i;
+        int temp[] = new int[N + 1];
+        for (i = 0; i <= N; i++) {
+            temp[i] = 0;
+        }
+ 
+        for (i = 0; i < N; i++) {
+            temp[arr[i] - 1] = 1;
+        }
+ 
+        int ans = 0;
+        for (i = 0; i <= N; i++) {
+            if (temp[i] == 0)
+                ans = i + 1;
+        }
+         return ans;
+    }
+}
+
+//========== User's Code Ends Here ==========
+
+
+public class Main
+{
+   
+   
+     public static void main(String[]args)
+    {
+        Scanner sc=new Scanner(System.in);
+        String y=sc.nextLine();
+        String n =sc.nextLine();
+        Solution s = new Solution();
+        String s_arr[]=n.split(" ");
+        int arr[]=new int[s_arr.length];
+        for(int i=0;i<s_arr.length;i++)
+        {
+            arr[i]=Integer.parseInt(s_arr[i]);
+        }
+        
+        int max= s.missing_elements(arr);
+        
+        System.out.println(max);
+    }
+}
