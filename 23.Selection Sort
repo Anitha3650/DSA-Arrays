@@ -1,0 +1,44 @@
+Write a program to sort the array in descending order using Selection sort algorithm. After Sorting return the array.
+Note both the array and size is already given.
+Input:-
+[4,3,2,5,1]
+Output:-
+[5,4,3,2,1]
+=======================================================================================================================
+import java.util.*;
+public class Main
+{
+   
+    public static int[] sort_array(int arr[],int n)
+    {
+        /*Function to sort the array in descending order
+        After sorting return the sorted array */
+
+        for(int i=0; i<n-1; i++){
+            int minindex = i;
+            for(int j=i+1; j<n; j++){
+                if(arr[minindex]<arr[j]){
+                    minindex = j;
+                }           
+            }
+                int temp = arr[i];
+                arr[i] = arr[minindex];
+                arr[minindex] = temp;
+
+        }
+        return arr;   
+    }
+     public static void main(String[]args)
+    {
+        Scanner sc=new Scanner(System.in);
+        int n =sc.nextInt();
+        int arr[]=new int [n];
+        for(int i=0;i<n;i++)
+        {
+            arr[i]=sc.nextInt();
+        }
+        int[] output = sort_array(arr, n);
+        for(int i=0;i<n;i++)
+            System.out.println(output[i]);
+    }
+}
