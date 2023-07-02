@@ -1,0 +1,63 @@
+Given an Array (arr) of size n. It only contains elements from range [1,n].
+Return an Array of all integers in the range [1,n] that do not appear in the array.
+
+Example 1:
+Input: nums = [4,3,2,7,8,2,3,1]
+Output: [5,6]
+Explanation:- All elements are present from 1 to 8 except 5 and 6.
+
+Example 2:
+Input: nums = [1,1]
+Output: [2]
+Explanation:- Elements that should be present is 1,2 (because n is 2 ) but 2 is missing.
+
+Constraints:
+n == nums.length
+1 <= n <= 10^5
+1 <= nums[i] <= n
+===================================================================================
+import java.util.*;
+
+class Solution {
+    public List<Integer> missing_elements(int[] nums) {
+       int n = nums.length;
+       ArrayList<Integer> output = new ArrayList<>();
+       int temp[] = new int[n+1] ;
+       for(int i : nums){
+           temp[i]++;
+       }
+       for(int i=1;i<=n;i++){
+           if(temp[i]==0){
+               output.add(i);
+           }
+       }
+       return output;
+    }
+}
+
+public class Main
+{
+   
+   
+     public static void main(String[]args)
+    {
+        Scanner sc=new Scanner(System.in);
+        String y=sc.nextLine();
+        String n =sc.nextLine();
+        Solution s = new Solution();
+        String s_arr[]=n.split(" ");
+        int arr[]=new int[s_arr.length];
+        for(int i=0;i<s_arr.length;i++)
+        {
+            arr[i]=Integer.parseInt(s_arr[i]);
+        }
+        
+        List<Integer> max= s.missing_elements(arr);
+        Collections.sort(max);
+        for(int i:max)
+        {
+            System.out.print(i+" ");
+        }
+        System.out.println();
+    }
+}
